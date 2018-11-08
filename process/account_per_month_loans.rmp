@@ -170,7 +170,7 @@
         <parameter key="keep_both_join_attributes" value="false"/>
       </operator>
       <operator activated="true" class="store" compatibility="9.0.003" expanded="true" height="68" name="Store" width="90" x="916" y="187">
-        <parameter key="repository_entry" value="../data/loan_per_month"/>
+        <parameter key="repository_entry" value="../processed_data/loan_per_month"/>
       </operator>
       <connect from_op="Retrieve new_account_date" from_port="output" to_op="Join" to_port="left"/>
       <connect from_op="Retrieve new_loan_train_date" from_port="output" to_op="Date to Nominal" to_port="example set input"/>
