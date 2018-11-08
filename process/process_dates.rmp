@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.0.003">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.0.003" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.0.003" expanded="true" height="68" name="Retrieve card_train" width="90" x="45" y="136">
+        <parameter key="repository_entry" value="../data/card_train"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="9.0.003" expanded="true" height="82" name="Generate Attributes (3)" width="90" x="246" y="136">
+        <list key="function_descriptions">
+          <parameter key="issued" value="concat(char(str(issued),2),char(str(issued),3),&quot;/&quot;, char(str(issued),4), char(str(issued),5),&quot;/&quot;) + &#10;if(parse(char(str(issued),0)) == 1 &amp;&amp; parse(char(str(issued),1)) &gt;=9, &#10;&#9;&quot;19&quot; + char(str(issued),0) + char(str(issued),1),&#10;&#9;if(parse(char(str(issued),0)) &gt; 1,&#10;&#9;&quot;19&quot; + char(str(issued),0) + char(str(issued),1),&#10;&#9;&quot;20&quot; + char(str(issued),0) + char(str(issued),1)))"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="nominal_to_date" compatibility="9.0.003" expanded="true" height="82" name="Nominal to Date (3)" width="90" x="447" y="136">
+        <parameter key="attribute_name" value="issued"/>
+        <parameter key="date_type" value="date"/>
+        <parameter key="date_format" value="MM/dd/yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="Portuguese (Portugal)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.0.003" expanded="true" height="68" name="Store (3)" width="90" x="648" y="136">
+        <parameter key="repository_entry" value="../processed_data/new_card_train_date"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="9.0.003" expanded="true" height="68" name="Retrieve loan_train" width="90" x="45" y="238">
+        <parameter key="repository_entry" value="../data/loan_train"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="9.0.003" expanded="true" height="82" name="Generate Attributes (5)" width="90" x="246" y="238">
+        <list key="function_descriptions">
+          <parameter key="date" value="concat(char(str(date),2),char(str(date),3),&quot;/&quot;, char(str(date),4), char(str(date),5),&quot;/&quot;) + &#10;if(parse(char(str(date),0)) == 1 &amp;&amp; parse(char(str(date),1)) &gt;=9, &#10;&#9;&quot;19&quot; + char(str(date),0) + char(str(date),1),&#10;&#9;if(parse(char(str(date),0)) &gt; 1,&#10;&#9;&quot;19&quot; + char(str(date),0) + char(str(date),1),&#10;&#9;&quot;20&quot; + char(str(date),0) + char(str(date),1)))"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="nominal_to_date" compatibility="9.0.003" expanded="true" height="82" name="Nominal to Date (5)" width="90" x="447" y="238">
+        <parameter key="attribute_name" value="date"/>
+        <parameter key="date_type" value="date"/>
+        <parameter key="date_format" value="MM/dd/yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="Portuguese (Portugal)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.0.003" expanded="true" height="68" name="Store (5)" width="90" x="648" y="238">
+        <parameter key="repository_entry" value="../processed_data/new_loan_train_date"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="9.0.003" expanded="true" height="68" name="Retrieve trans_train" width="90" x="45" y="340">
+        <parameter key="repository_entry" value="../data/trans_train"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="9.0.003" expanded="true" height="82" name="Generate Attributes (7)" width="90" x="246" y="340">
+        <list key="function_descriptions">
+          <parameter key="date" value="concat(char(str(date),2),char(str(date),3),&quot;/&quot;, char(str(date),4), char(str(date),5),&quot;/&quot;) + &#10;if(parse(char(str(date),0)) == 1 &amp;&amp; parse(char(str(date),1)) &gt;=9, &#10;&#9;&quot;19&quot; + char(str(date),0) + char(str(date),1),&#10;&#9;if(parse(char(str(date),0)) &gt; 1,&#10;&#9;&quot;19&quot; + char(str(date),0) + char(str(date),1),&#10;&#9;&quot;20&quot; + char(str(date),0) + char(str(date),1)))"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="nominal_to_date" compatibility="9.0.003" expanded="true" height="82" name="Nominal to Date (7)" width="90" x="447" y="340">
+        <parameter key="attribute_name" value="date"/>
+        <parameter key="date_type" value="date"/>
+        <parameter key="date_format" value="MM/dd/yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="Portuguese (Portugal)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.0.003" expanded="true" height="68" name="Store (2)" width="90" x="648" y="340">
+        <parameter key="repository_entry" value="../processed_data/new_trans_train_date"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="9.0.003" expanded="true" height="68" name="Retrieve account" width="90" x="45" y="34">
+        <parameter key="repository_entry" value="../data/account"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="9.0.003" expanded="true" height="82" name="Generate Attributes" width="90" x="246" y="34">
+        <list key="function_descriptions">
+          <parameter key="age" value="if((parse(char(str(date),0)) &gt; 1), &#10;&#9;date_get(date_now(), DATE_UNIT_YEAR)- parse(concat(&quot;1&quot;,&quot;9&quot;,char(str(date),0),char(str(date),1))),&#10;&#9;date_get(date_now(), DATE_UNIT_YEAR)- parse(concat(&quot;2&quot;,&quot;0&quot;,char(str(date),0),char(str(date),1)))&#9;&#9;&#10;)"/>
+          <parameter key="date" value="concat(char(str(date),2),char(str(date),3),&quot;/&quot;, char(str(date),4), char(str(date),5),&quot;/&quot;) + &#10;if(parse(char(str(date),0)) == 1 &amp;&amp; parse(char(str(date),1)) &gt;=9, &#10;&#9;&quot;19&quot; + char(str(date),0) + char(str(date),1),&#10;&#9;if(parse(char(str(date),0)) &gt; 1,&#10;&#9;&quot;19&quot; + char(str(date),0) + char(str(date),1),&#10;&#9;&quot;20&quot; + char(str(date),0) + char(str(date),1)))"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="nominal_to_date" compatibility="9.0.003" expanded="true" height="82" name="Nominal to Date" width="90" x="447" y="34">
+        <parameter key="attribute_name" value="date"/>
+        <parameter key="date_type" value="date"/>
+        <parameter key="date_format" value="MM/dd/yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="Portuguese (Portugal)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.0.003" expanded="true" height="68" name="Store" width="90" x="648" y="34">
+        <parameter key="repository_entry" value="../processed_data/new_account_date"/>
+      </operator>
+      <connect from_op="Retrieve card_train" from_port="output" to_op="Generate Attributes (3)" to_port="example set input"/>
+      <connect from_op="Generate Attributes (3)" from_port="example set output" to_op="Nominal to Date (3)" to_port="example set input"/>
+      <connect from_op="Nominal to Date (3)" from_port="example set output" to_op="Store (3)" to_port="input"/>
+      <connect from_op="Store (3)" from_port="through" to_port="result 2"/>
+      <connect from_op="Retrieve loan_train" from_port="output" to_op="Generate Attributes (5)" to_port="example set input"/>
+      <connect from_op="Generate Attributes (5)" from_port="example set output" to_op="Nominal to Date (5)" to_port="example set input"/>
+      <connect from_op="Nominal to Date (5)" from_port="example set output" to_op="Store (5)" to_port="input"/>
+      <connect from_op="Store (5)" from_port="through" to_port="result 3"/>
+      <connect from_op="Retrieve trans_train" from_port="output" to_op="Generate Attributes (7)" to_port="example set input"/>
+      <connect from_op="Generate Attributes (7)" from_port="example set output" to_op="Nominal to Date (7)" to_port="example set input"/>
+      <connect from_op="Nominal to Date (7)" from_port="example set output" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Store (2)" from_port="through" to_port="result 4"/>
+      <connect from_op="Retrieve account" from_port="output" to_op="Generate Attributes" to_port="example set input"/>
+      <connect from_op="Generate Attributes" from_port="example set output" to_op="Nominal to Date" to_port="example set input"/>
+      <connect from_op="Nominal to Date" from_port="example set output" to_op="Store" to_port="input"/>
+      <connect from_op="Store" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+      <portSpacing port="sink_result 5" spacing="0"/>
+    </process>
+  </operator>
+</process>
