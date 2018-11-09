@@ -15,7 +15,7 @@
       <operator activated="true" class="retrieve" compatibility="9.0.003" expanded="true" height="68" name="Retrieve account_loan_trans_client" width="90" x="112" y="136">
         <parameter key="repository_entry" value="../processed_data/account_loan_trans_client"/>
       </operator>
-      <operator activated="true" class="concurrency:k_means" compatibility="9.0.003" expanded="true" height="82" name="Clustering" width="90" x="514" y="85">
+      <operator activated="true" class="concurrency:k_means" compatibility="9.0.003" expanded="true" height="82" name="Clustering" width="90" x="447" y="85">
         <parameter key="add_cluster_attribute" value="true"/>
         <parameter key="add_as_label" value="false"/>
         <parameter key="remove_unlabeled" value="false"/>
